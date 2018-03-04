@@ -4,11 +4,12 @@ const discordClient     = new Discord.Client();
 const fortniteClient    = new Fortnite('e7b047d2-5ce8-42fd-b55c-15620ebd5238');
 const fs                = require('fs');
 const _                 = require("underscore.string");
+const Players           = require("./players.js");
 
 discordClient.login('NDE4ODY4MzI2NjQ3OTg4MjI0.DXn3wA.cCbySY5hnV3jhuKM-AMrm_KYn1E');
 
 discordClient.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+  console.log(`Logged in as ${discordClient.user.tag}!`);
 });
 
 //Listen for messages.
@@ -21,43 +22,14 @@ discordClient.on('message', msg => {
     return;
   }
 
-  if ( s( msgContent ).startsWith("!register") ) {
+  if ( _( msgContent ).startsWith("!dtregister") ) {
     var username = _.strRight(msgContent, ' ');
+    Players.registerPlayer( username ).then( data => msg.channel.send( data.message ) );
+  }
+
+  if ( _( msgContent ).startsWith("!dtremove") ) {
+    var username = _.strRight(msgContent, ' ');
+    Players.deRegisterPlayer( username ).then( data => msg.channel.send( data.message ) );
   }
 
 });
-
-
-
-
-fs.readFile('players.txt', 'utf8', (err, data) => {
-  if (err) throw "err";
-
-  var players = _.lines(data);
-  for (var i = 0; i < players.length; i++) {
-
-    if( players[i].length ){
-
-      fortniteClient.getInfo(players[i], 'pc').then(
-        function( data ){
-
-          var soloWins = data.stats.p2.top1.valueInt;
-          var duoWins = data.stats.p10.top1.valueInt;
-          var squadWins = data.stats.p9.top1.valueInt;
-
-
-
-      });
-    }
-  }
-
-});
-
-registerPlayer: (player) => {
-  //read the json and append a new player.
-  fs.appendFile('players.txt', 'testy\n', function (err) {
-    if (err) throw err;
-    console.log('Saved!');
-  });
-
-}
