@@ -1,16 +1,14 @@
 {
-  "name": "chicken-dinner-bot",
+  "name": "dinner-time-bot",
   "version": "1.0.0",
   "description": "My Fortnite bot to announce chicken dinners",
   "main": "bot.js",
   "author": "Grant Lemoine",
   "dependencies": {
-    "discord.io": "^2.5.3",
     "discord.js": "^11.3.0",
     "fortnite": "^3.0.0",
-    "fortnite-api": "^2.6.1",
     "fs": "0.0.1-security",
-    "line-by-line": "^0.1.6",
+    "q": "^1.5.1",
     "underscore": "^1.8.3",
     "underscore.string": "^3.3.4",
     "winston": "^2.4.0"
