@@ -15,7 +15,7 @@ var playersjson = require("./players.json");
     //Make sure we don't add duplicates.
     for( var i = 0; i < playersjson.players.length; i++ ){
       if( playersjson.players[i].username == username ){
-        def.reject("Player already exists, man! What do you want from me?!");
+        def.reject("I'm already tracking him, man! What more do you want from me?!");
         return def.promise;
       }
     }

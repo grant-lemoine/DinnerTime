@@ -5,7 +5,7 @@
   "main": "bot.js",
   "author": "Grant Lemoine",
   "dependencies": {
-    "discord.js": "^11.3.0",
+    "discord.js": "^11.3.2",
     "fortnite": "^3.0.0",
     "fs": "0.0.1-security",
     "q": "^1.5.1",
